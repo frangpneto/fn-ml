@@ -24,10 +24,10 @@
           </template>
         </v-list>
       </v-navigation-drawer>
-      <v-toolbar color="amber" app absolute clipped-left>
+       <v-toolbar color="amber" app absolute clipped-left>
         <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
         <span class="title ml-3 mr-5">Mercado Livre</span>
-        <v-text-field solo-inverted flat label="Search" prepend-icon="search"></v-text-field>
+        <!-- <v-text-field solo-inverted flat label="Search" prepend-icon="search"></v-text-field> -->
         <v-spacer></v-spacer>
       </v-toolbar>
       <v-content>
