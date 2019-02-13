@@ -17,6 +17,29 @@
   </div>
 </template>
 
+<script>
+import axios from "axios";
+export default {
+  fetch({ store, par }) {
+    console.log("start get api");
+    return axios({
+      method: "post",
+      headers:{'map-key': 'connect-3pKAdFWa'},
+      data: {
+        updateTime: "2019-02-13"
+      },
+      url: "https://www.leverosintegra.com.br/Map/Api/Orders"
+    })
+      .then(res => {
+        console.log("ok", res);
+        //store.seller = res.data;
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
+  }
+};
+</script>
 
 
 
