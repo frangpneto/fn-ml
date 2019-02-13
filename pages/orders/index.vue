@@ -2,7 +2,7 @@
   <div>
     <v-container fluid>
       <v-layout>
-          <b>Dashboard</b>
+          <b></b>
       </v-layout>
     </v-container>
   </div>
