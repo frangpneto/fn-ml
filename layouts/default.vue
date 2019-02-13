@@ -24,16 +24,14 @@
           </template>
         </v-list>
       </v-navigation-drawer>
-       <v-toolbar color="amber" app absolute clipped-left>
+      <v-toolbar color="amber" app absolute clipped-left>
         <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
         <span class="title ml-3 mr-5">Mercado Livre</span>
         <!-- <v-text-field solo-inverted flat label="Search" prepend-icon="search"></v-text-field> -->
         <v-spacer></v-spacer>
       </v-toolbar>
       <v-content>
-
-          <nuxt/>
-
+        <nuxt/>
       </v-content>
     </v-app>
   </div>
@@ -53,6 +51,28 @@
 </style>
 
 <script>
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+if (window.location.pathname != "/login") {
+  if (getCookie("seller") == "") {
+    window.location = "/login";
+  }
+}
+
 export default {
   data: () => ({
     drawer: null,
@@ -61,7 +81,8 @@ export default {
       { icon: "question_answer", text: "Questions", to: "/questions" },
       { icon: "apps", text: "Produtos", to: "/products" },
       { icon: "shopping_cart", text: "Vendas", to: "/orders" },
-      { icon: "supervisor_account", text: "Gestão de Usuários", to:"/account" }
+      { icon: "supervisor_account", text: "Gestão de Usuários", to: "/account" },
+      { icon: "exit_to_app", text: "Sair", to: "/login"}
     ]
   }),
   props: {
