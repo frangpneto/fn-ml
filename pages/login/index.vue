@@ -49,6 +49,21 @@ function getCookie(cookieName, stringCsookie) {
   return unescape(strCookie ? strCookie.toString().replace(/^[^=]+./, "") : "");
 }
 export default {
+  head() {
+    return {
+      title: "Dashboard Mercado Livre - Login",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "keywords", content: "dashboard mercado livre, mercado livre, gestão de vendas mercado livre, gestão de vendas" },
+        {
+          hid: "description",
+          name: "description",
+          content: "aplicação para gestão de vendas realizadas no mercado livre."
+        }
+      ]
+    };
+  },
   data: () => ({
     drawer: null,
     email: "",
@@ -60,7 +75,7 @@ export default {
   layout: "clean",
   methods: {
     login(email, senha) {
-      this.$nuxt.$loading.start()
+      this.$nuxt.$loading.start();
       axios({
         method: "post",
         data: {
