@@ -88,6 +88,7 @@ export default {
           if (res.status == 200) {
             document.cookie = `seller=${res.data.seller}`;
             document.cookie = `loja=${res.data.loja}`;
+            document.cookie = `usuario=${email}`
             window.location = "/";
           } else {
             alert(res.data.message);

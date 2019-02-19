@@ -174,7 +174,7 @@ function sumQUestionsToday(questions) {
     ) {
       total++;
     } else {
-      console.log(question.dateCreated);
+      //console.log(question.dateCreated);
     }
   }
   return total;
