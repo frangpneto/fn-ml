@@ -147,21 +147,21 @@ function sumQuestionsPending(questions) {
   return total;
 }
 function getOrderToday(orders) {
-  var ordersToday = []
+  var ordersToday = [];
   var total = 0;
   var value = 0;
   for (var i = 0; i < orders.length; i++) {
     var order = orders[i];
     if (
-      moment(order.dateCreated).format("YYYY-MM-DD") >=
-      moment().format("YYYY-MM-DD")
+      moment(new Date(order.dateCreated).addHours(3)).format("YYYY-MM-DD") >=
+      moment((new Date).addHours(3)).format("YYYY-MM-DD")
     ) {
       total++;
-      value = +value + +order.totalAmount
+      value = +value + +order.totalAmount;
     }
   }
-  ordersToday.quantity = total
-  ordersToday.value = value
+  ordersToday.quantity = total;
+  ordersToday.value = value;
   return ordersToday;
 }
 function sumQUestionsToday(questions) {
@@ -169,8 +169,8 @@ function sumQUestionsToday(questions) {
   for (var i = 0; i < questions.length; i++) {
     var question = questions[i];
     if (
-      moment(question.dateCreated).format("YYYY-MM-DD") >=
-      moment().format("YYYY-MM-DD")
+      moment(new Date(question.dateCreated).addHours(3)).format("YYYY-MM-DD") >=
+      moment((new Date).addHours(3)).format("YYYY-MM-DD")
     ) {
       total++;
     } else {
@@ -207,6 +207,12 @@ function questionsLatestSevenDays(items) {
   }
   return total;
 }
+
+Date.prototype.addHours = function(h) {
+   this.setTime(this.getTime() + (h*60*60*1000));
+   return this;
+}
+
 export default {
   // data() {
   //   return {
@@ -220,13 +226,15 @@ export default {
         "seller"
       )}?dti=${moment(new Date().addDays(-7)).format(
         "YYYY-MM-DD"
-      )}&dtf=${moment().format()}`
+      )}&dtf=${moment((new Date).addHours(3)).format()}`
     });
     let getQuestions = await axios({
       method: "post",
       url: `https://neto-mercado-livre.herokuapp.com/api/questions/${getCookie(
         "seller"
-      )}?dti=${moment(new Date().addDays(-7)).format("YYYY-MM-DD")}&dtf=${moment().format()}`
+      )}?dti=${moment(new Date().addDays(-7)).format(
+        "YYYY-MM-DD"
+      )}&dtf=${moment((new Date).addHours(3)).format()}`
     });
     let getItems = await axios({
       method: "post",

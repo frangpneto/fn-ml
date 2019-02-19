@@ -49,6 +49,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/pwa',
   ],
 
   /*
@@ -62,12 +63,12 @@ module.exports = {
         import: ["~assets/style/variables.styl"]
       }
     },
-    
+
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
     }
   }
 }
