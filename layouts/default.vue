@@ -93,6 +93,7 @@ export default {
     drawer: null,
     items: [
       { icon: "dashboard", text: "Dashboard", to: "/" },
+      { icon: "remove_red_eye", text: "Concorrentes", to: "/competitors" },
       { icon: "question_answer", text: "Questions", to: "/questions" },
       { icon: "apps", text: "Produtos", to: "/products" },
       { icon: "shopping_cart", text: "Vendas", to: "/orders" },
