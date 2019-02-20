@@ -53,7 +53,40 @@ module.exports = {
     name: "Dashboard ML",
     display: "standalone",
     lang: "pt-BR",
-    description: "Gerencie suas vendas do Mercado Livre."
+    background_color: "#fff",
+    description: "Gerencie suas vendas do Mercado Livre.",
+    icons: [
+      {
+        src: "images/32bits-16.png",
+        sizes: "16x16",
+        type: "image/png"
+      },
+      {
+        src: "images/32bits-24.png",
+        sizes: "24x24",
+        type: "image/png"
+      },
+      {
+        src: "images/32bits-32.png",
+        sizes: "32x32",
+        type: "image/png"
+      },
+      {
+        src: "images/32bits-48.png",
+        sizes: "48x48",
+        type: "image/png"
+      },
+      {
+        src: "images/32bits-128.png",
+        sizes: "128x128",
+        type: "image/png"
+      },
+      {
+        src: "images/32bits-256.png",
+        sizes: "256x256",
+        type: "image/png"
+      }
+    ]
   },
   /*
    ** Build configuration
