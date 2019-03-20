@@ -244,15 +244,20 @@ export default {
   },
   methods: {
     saveUser() {
-      if (this.email.search("@") > 0) {
-        if (this.email != "" && this.pass != "") {
-          saveUser(this.email, this.pass);
+      if (this.users.length < 2) {
+        if (this.email.search("@") > 0) {
+          if (this.email != "" && this.pass != "") {
+            saveUser(this.email, this.pass);
+          } else {
+            alert("email e senha são campos obrigatórios");
+          }
         } else {
-          alert("email e senha são campos obrigatórios");
+          alert("o campo e-mail é inválido");
         }
-      }
-      else{
-        alert('o campo e-mail é inválido')
+      } else {
+        alert(
+          "Versão gratuita é limitada a 2 usuários, para cadastrar mais de 2 usuários envie um e-mail para suporte@software-fn.com"
+        );
       }
     },
     removerUser() {

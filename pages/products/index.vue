@@ -21,7 +21,7 @@
         <td>
           <v-img :src="props.item.secureThumbnail" style="width: 100px"></v-img>
         </td>
-        <td>{{props.item.dateCreated}}</td>
+        <td>{{props.item.dateCreated | formatDate}}</td>
         <td>{{props.item.title}}</td>
         <td>{{props.item.status}}</td>
         <td>{{props.item.sellerCustomField}}</td>

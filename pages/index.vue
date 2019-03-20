@@ -62,7 +62,7 @@
                 <span>Receita</span>
               </v-flex>
               <v-flex xs12 sm6>
-                <h2>R$ {{(orderToday.value / orderToday.quantity).toFixed(2)}}</h2>
+                <h2>{{(orderToday.value / orderToday.quantity) | currency}}</h2>
                 <span>Ticket Médio</span>
               </v-flex>
             </v-layout>
@@ -97,6 +97,34 @@
           <v-card-actions>
             <span class="font-italic">ultimos 7 dias</span>
           </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <!-- Concorrentes -->
+    <v-layout justify-start>
+      <v-icon light>remove_red_eye</v-icon>
+      <h1>Concorrentes</h1>
+    </v-layout>
+    <v-divider></v-divider>
+    <v-layout row wrap>
+      <v-flex pa-1 md4 v-for="concorrente in competitors" :key="concorrente.loja">
+        <v-card>
+          <v-card-title>
+            <v-icon large left>mdi-twitter</v-icon>
+            <span class="title">{{concorrente.loja}}</span>
+          </v-card-title>
+          <v-container>
+            <v-layout row wrap>
+              <v-flex xs12 sm6>
+                <h2>{{concorrente.Qtd}}</h2>
+                <span>Quantidade Vendida</span>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <h2>{{concorrente.Valor | currency}}</h2>
+                <span>Valor Vendido</span>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-card>
       </v-flex>
     </v-layout>
@@ -154,7 +182,7 @@ function getOrderToday(orders) {
     var order = orders[i];
     if (
       moment(new Date(order.dateCreated).addHours(3)).format("YYYY-MM-DD") >=
-      moment((new Date).addHours(3)).format("YYYY-MM-DD")
+      moment(new Date().addHours(3)).format("YYYY-MM-DD")
     ) {
       total++;
       value = +value + +order.totalAmount;
@@ -170,7 +198,7 @@ function sumQUestionsToday(questions) {
     var question = questions[i];
     if (
       moment(new Date(question.dateCreated).addHours(3)).format("YYYY-MM-DD") >=
-      moment((new Date).addHours(3)).format("YYYY-MM-DD")
+      moment(new Date().addHours(3)).format("YYYY-MM-DD")
     ) {
       total++;
     } else {
@@ -209,9 +237,9 @@ function questionsLatestSevenDays(items) {
 }
 
 Date.prototype.addHours = function(h) {
-   this.setTime(this.getTime() + (h*60*60*1000));
-   return this;
-}
+  this.setTime(this.getTime() + h * 60 * 60 * 1000);
+  return this;
+};
 
 export default {
   // data() {
@@ -226,7 +254,7 @@ export default {
         "seller"
       )}?dti=${moment(new Date().addDays(-7)).format(
         "YYYY-MM-DD"
-      )}&dtf=${moment((new Date).addHours(3)).format()}`
+      )}&dtf=${moment(new Date().addHours(3)).format()}`
     });
     let getQuestions = await axios({
       method: "post",
@@ -234,7 +262,7 @@ export default {
         "seller"
       )}?dti=${moment(new Date().addDays(-7)).format(
         "YYYY-MM-DD"
-      )}&dtf=${moment((new Date).addHours(3)).format()}`
+      )}&dtf=${moment(new Date().addHours(3)).format()}`
     });
     let getItems = await axios({
       method: "post",
@@ -248,6 +276,14 @@ export default {
         "loja"
       )}`
     });
+    let getCompetitors = await axios({
+      method: "get",
+      url: `https://neto-mercado-livre.herokuapp.com/api/competitor/${getCookie(
+        "seller"
+      )}`
+    }).then(res => {
+      return res.data;
+    });
     return {
       orderToday: getOrderToday(getOrders.data),
       orders: getOrders.data,
@@ -258,7 +294,8 @@ export default {
       items: getItems.data,
       inactiveItem: itemsInactive(getItems.data),
       orderMessagesPending: messagePending(getMessage.data),
-      visitsSevenDay: questionsLatestSevenDays(getItems.data)
+      visitsSevenDay: questionsLatestSevenDays(getItems.data),
+      competitors: getCompetitors
     };
   },
   components: {
