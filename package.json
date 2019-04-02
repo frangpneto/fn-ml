@@ -1,7 +1,7 @@
 {
   "name": "neto-web-mercado-livre",
   "version": "1.0.0",
-  "description": "My badass Nuxt.js project",
+  "description": "Acompanhe seus concorrentes, tenha acesso a indicadores das vendas realizadas no Mercado Livre. Aplicação para gestão de vendas realizadas no Mercado Livre.",
   "author": "Francisco",
   "private": true,
   "engines": {
