@@ -15,6 +15,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@nuxtjs/google-analytics": "^2.2.0",
     "@nuxtjs/manifest": "^3.0.0-beta.8",
     "@nuxtjs/pwa": "^3.0.0-beta.8",
     "axios": "^0.18.0",
@@ -24,6 +25,7 @@
     "express": "^4.16.4",
     "moment": "^2.24.0",
     "nuxt": "^2.4.0",
+    "vue-analytics": "^5.16.4",
     "vue-currency-filter": "^3.3.0",
     "vue-numeric": "^2.3.0",
     "vuetify": "^1.5.0",

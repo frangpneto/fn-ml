@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div @click="track">
     <v-layout justify-start>
       <v-icon light>multiline_chart</v-icon>
       <h1>Dashboard</h1>
@@ -300,6 +300,16 @@ export default {
   },
   components: {
     VueNumeric
+  },
+  methods: {
+    track() {
+      console.log('ga started')
+      this.$ga.page({
+        page: "/",
+        title: "Home page",
+        location: window.location.href
+      });
+    }
   }
 };
 </script>

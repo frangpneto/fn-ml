@@ -1,7 +1,18 @@
-import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
-import colors from 'vuetify/es5/util/colors'
+import Vue from "vue";
+import Vuetify from "vuetify/lib";
+import colors from "vuetify/es5/util/colors";
+import VueAnalytics from "vue-analytics";
 
+
+
+
+Vue.use(VueAnalytics, {
+  id: "UA-134863916-1",
+  checkDuplicatedScript: true,
+  autoTracking: {
+    screenview: true
+  }
+});
 Vue.use(Vuetify, {
   theme: {
     primary: colors.blue.darken2,
@@ -12,4 +23,4 @@ Vue.use(Vuetify, {
     error: colors.deepOrange.accent4,
     success: colors.green.accent3
   }
-})
+});

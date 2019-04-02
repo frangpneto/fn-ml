@@ -67,7 +67,7 @@ function getCookie(cname) {
   return "";
 }
 
-if (window.location.pathname != "/login") {
+if (window.location.pathname != "/login" && window.location.pathname != "/br") {
   if (getCookie("seller") == "") {
     window.location = "/login";
   }
@@ -80,11 +80,16 @@ export default {
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "keywords", content: "dashboard mercado livre, mercado livre, gestão de vendas mercado livre, gestão de vendas" },
+        {
+          name: "keywords",
+          content:
+            "dashboard mercado livre, mercado livre, gestão de vendas mercado livre, gestão de vendas, vender mais, mercadolivre, software, ferramentas, acompanhar concorrentes, responder perguntas, subir de posição, publicar, publicar massivamente, indicadores, metricas, tempo real, notificações, operadores"
+        },
         {
           hid: "description",
           name: "description",
-          content: "aplicação para gestão de vendas realizadas no mercado livre."
+          content:
+            "Acompanhe seus concorrentes, tenha acesso a indicadores das vendas realizadas no Mercado Livre. Aplicação para gestão de vendas realizadas no Mercado Livre."
         }
       ]
     };
@@ -97,12 +102,21 @@ export default {
       { icon: "question_answer", text: "Questions", to: "/questions" },
       { icon: "apps", text: "Produtos", to: "/products" },
       { icon: "shopping_cart", text: "Vendas", to: "/orders" },
-      { icon: "supervisor_account", text: "Gestão de Usuários", to: "/account" },
-      { icon: "exit_to_app", text: "Sair", to: "/login"}
+      {
+        icon: "supervisor_account",
+        text: "Gestão de Usuários",
+        to: "/account"
+      },
+      { icon: "exit_to_app", text: "Sair", to: "/login" }
     ]
   }),
   props: {
     source: String
+  },
+  methods: {
+    track() {
+      this.$ga.page(this.$router);
+    }
   }
 };
 </script>
