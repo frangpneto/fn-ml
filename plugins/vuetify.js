@@ -4,10 +4,7 @@ import colors from "vuetify/es5/util/colors";
 import VueAnalytics  from "vue-analytics";
 
 Vue.use(VueAnalytics, {
-  id: "UA-134863916-1",
-  debug: {
-    enabled: true
-  }
+  id: "UA-134863916-1"
 });
 Vue.use(Vuetify, {
   theme: {
