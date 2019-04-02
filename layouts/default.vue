@@ -109,7 +109,7 @@ export default {
         text: "Gestão de Usuários",
         to: "/account"
       },
-      { icon: "exit_to_app", text: "Sair", to: "/login" }
+      { icon: "exit_to_app", text: "Sair", to: "/br" }
     ]
   }),
   props: {
