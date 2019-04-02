@@ -306,7 +306,7 @@ export default {
       console.log('ga started')
       this.$ga.page({
         page: "/",
-        title: "Home page",
+        title: "Página Home Logada",
         location: window.location.href
       });
     }

@@ -49,6 +49,8 @@
   font-weight: 400;
 }
 </style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
 
 <script>
 function getCookie(cname) {
@@ -69,7 +71,7 @@ function getCookie(cname) {
 
 if (window.location.pathname != "/login" && window.location.pathname != "/br") {
   if (getCookie("seller") == "") {
-    window.location = "/login";
+    window.location = "/br";
   }
 }
 
