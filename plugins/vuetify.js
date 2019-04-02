@@ -1,16 +1,12 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib";
 import colors from "vuetify/es5/util/colors";
-import VueAnalytics from "vue-analytics";
-
-
-
+import VueAnalytics  from "vue-analytics";
 
 Vue.use(VueAnalytics, {
   id: "UA-134863916-1",
-  checkDuplicatedScript: true,
-  autoTracking: {
-    screenview: true
+  debug: {
+    enabled: true
   }
 });
 Vue.use(Vuetify, {
