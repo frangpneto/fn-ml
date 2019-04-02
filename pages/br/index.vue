@@ -3,8 +3,9 @@
     <v-toolbar light class="cursive">
       <v-toolbar-title id="title" @click="track">Dashboard Mercado Livre</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items v-for="item in items" :key="item.text" class="hidden-sm-and-down">
-        <v-btn flat :to="item.to">{{ item.text }}</v-btn>
+      <v-toolbar-items v-for="item in items" :key="item.text">
+        <v-btn v-if="item.text != 'Acessar'" class="hidden-sm-and-down" flat :to="item.to">{{ item.text }}</v-btn>
+        <v-btn v-else-if="item.text == 'Acessar'" flat :to="item.to">{{ item.text }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-container>
@@ -51,7 +52,7 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: "Acompanhe seus concorrentes, tenha acesso a indicadores das vendas realizadas no Mercado Livre. Aplicação para gestão de vendas realizadas no Mercado Livre."
+          content: "Acompanhe seus concorrentes, tenha acesso a indicadores das vendas realizadas no Mercado Livre gratuitamente. Aplicação sem custo para gestão de vendas realizadas no Mercado Livre."
         }
       ]
     };
@@ -66,7 +67,7 @@ export default {
           text: "Premium"
         },
         {
-          text: "Aessar",
+          text: "Acessar",
           to: "/login"
         }
       ]

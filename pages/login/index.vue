@@ -51,7 +51,7 @@ function getCookie(cookieName, stringCsookie) {
 export default {
   head() {
     return {
-      title: "Calei | Dashboard Mercado Livre",
+      title: "Calei | Login Dashboard Mercado Livre",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -59,7 +59,7 @@ export default {
         {
           hid: "description",
           name: "description",
-          content: "Acompanhe seus concorrentes, tenha acesso a indicadores das vendas realizadas no Mercado Livre. Aplicação para gestão de vendas realizadas no Mercado Livre."
+          content: "Faça o login e tenha acesso a todos os indicadores de suas vendas no Mercado Livre e acompanhe seus concorrentes de perto."
         }
       ]
     };
