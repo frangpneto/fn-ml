@@ -27,7 +27,9 @@
     "nuxt": "^2.4.0",
     "vue-analytics": "^5.16.4",
     "vue-currency-filter": "^3.3.0",
+    "vue-google-adsense": "^1.5.1",
     "vue-numeric": "^2.3.0",
+    "vue-script2": "^2.0.3",
     "vuetify": "^1.5.0",
     "vuetify-loader": "^1.2.0"
   },

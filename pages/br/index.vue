@@ -4,12 +4,18 @@
       <v-toolbar-title id="title" @click="track">Dashboard Mercado Livre</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items v-for="item in items" :key="item.text">
-        <v-btn v-if="item.text != 'Acessar'" class="hidden-sm-and-down" flat :to="item.to">{{ item.text }}</v-btn>
+        <v-btn
+          v-if="item.text != 'Acessar'"
+          class="hidden-sm-and-down"
+          flat
+          :to="item.to"
+        >{{ item.text }}</v-btn>
         <v-btn v-else-if="item.text == 'Acessar'" flat :to="item.to">{{ item.text }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-container>
       <!-- body -->
+      <InArticleAdsense data-ad-client="ca-pub-7138135049330010" data-ad-slot="2685611896"></InArticleAdsense>
       <v-layout row wrap>
         <v-container>
           <v-layout row wrap>
@@ -27,9 +33,8 @@
       </v-layout>
     </v-container>
     <v-footer>
-        <v-layout>
-        </v-layout>
-      </v-footer>
+      <v-layout></v-layout>
+    </v-footer>
   </v-form>
 </template>
 <style scoped>
@@ -48,11 +53,16 @@ export default {
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "keywords", content: "dashboard mercado livre, mercado livre, gestão de vendas mercado livre, gestão de vendas, vender mais, mercadolivre, software, ferramentas, acompanhar concorrentes, responder perguntas, subir de posição, publicar, publicar massivamente, indicadores, metricas, tempo real, notificações, operadores" },
+        {
+          name: "keywords",
+          content:
+            "dashboard mercado livre, mercado livre, gestão de vendas mercado livre, gestão de vendas, vender mais, mercadolivre, software, ferramentas, acompanhar concorrentes, responder perguntas, subir de posição, publicar, publicar massivamente, indicadores, metricas, tempo real, notificações, operadores"
+        },
         {
           hid: "description",
           name: "description",
-          content: "Acompanhe seus concorrentes, tenha acesso a indicadores das vendas realizadas no Mercado Livre gratuitamente. Aplicação sem custo para gestão de vendas realizadas no Mercado Livre."
+          content:
+            "Acompanhe seus concorrentes, tenha acesso a indicadores das vendas realizadas no Mercado Livre gratuitamente. Aplicação sem custo para gestão de vendas realizadas no Mercado Livre."
         }
       ]
     };

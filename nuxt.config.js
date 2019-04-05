@@ -41,7 +41,8 @@ module.exports = {
   plugins: [
     { src: "@/plugins/vuetify" },
     { src: "~/plugins/currency", ssr: true },
-    { src: "~/plugins/moment", ssr: true }
+    { src: "~/plugins/moment", ssr: true },
+    { src: '~/plugins/vue-google-adsense', ssr: false }
   ],
 
   /*
