@@ -43,6 +43,8 @@
 }
 </style>
 <script>
+document.cookie = "seller=";
+document.cookie = "loja=";
 setTimeout(function() {
   document.getElementById("title").click();
 }, 1000);
