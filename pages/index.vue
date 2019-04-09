@@ -3,7 +3,7 @@
   <div @click="track">
     <v-layout justify-start>
       <v-icon light>multiline_chart</v-icon>
-      <h1>Dashboard</h1>
+      <h1 id="title" @click="track">Dashboard</h1>
     </v-layout>
     <v-divider></v-divider>
     <v-layout row wrap>
@@ -132,6 +132,9 @@
 </template>
 
 <script>
+setTimeout(function() {
+  document.getElementById("title").click();
+}, 1000);
 import axios from "axios";
 import cookies from "cookie";
 import VueNumeric from "vue-numeric";

@@ -1,22 +1,11 @@
 <template>
   <v-card>
-    <v-card-title>
+    <v-card-title id="title" @click="track">
       Products
       <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
+      <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details></v-text-field>
     </v-card-title>
-    <v-data-table
-    :headers="headers"
-    :items="items"
-    v-model="selected"
-    :search="search"  >
-
+    <v-data-table :headers="headers" :items="items" v-model="selected" :search="search">
       <template slot="items" slot-scope="props">
         <td>
           <v-img :src="props.item.secureThumbnail" style="width: 100px"></v-img>
@@ -30,14 +19,20 @@
         <td>{{props.item.soldQuantity}}</td>
         <td>{{props.item.price}}</td>
       </template>
-      <v-alert slot="no-results" :value="true" color="error" icon="warning">
-        Your search for "{{ search }}" found no results.
-      </v-alert>
+      <v-alert
+        slot="no-results"
+        :value="true"
+        color="error"
+        icon="warning"
+      >Your search for "{{ search }}" found no results.</v-alert>
     </v-data-table>
   </v-card>
 </template>
 
 <script>
+setTimeout(function() {
+  document.getElementById("title").click();
+}, 1000);
 import axios from "axios";
 import cookies from "cookie";
 import VueNumeric from "vue-numeric";
@@ -74,7 +69,7 @@ export default {
 
     return {
       items: getItems.data,
-      search: '',
+      search: "",
       headers: [
         {
           text: "Item",
@@ -134,18 +129,26 @@ export default {
     };
   },
   methods: {
-      toggleAll () {
-        if (this.selected.length) this.selected = []
-        else this.selected = this.desserts.slice()
-      },
-      changeSort (column) {
-        if (this.pagination.sortBy === column) {
-          this.pagination.descending = !this.pagination.descending
-        } else {
-          this.pagination.sortBy = column
-          this.pagination.descending = false
-        }
+    track() {
+      console.log("ga started");
+      this.$ga.page({
+        page: "/br",
+        title: "Página de Produtos",
+        location: window.location.href
+      });
+    },
+    toggleAll() {
+      if (this.selected.length) this.selected = [];
+      else this.selected = this.desserts.slice();
+    },
+    changeSort(column) {
+      if (this.pagination.sortBy === column) {
+        this.pagination.descending = !this.pagination.descending;
+      } else {
+        this.pagination.sortBy = column;
+        this.pagination.descending = false;
       }
     }
+  }
 };
 </script>

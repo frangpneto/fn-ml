@@ -6,7 +6,7 @@
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
               <v-toolbar dark color="primary">
-                <v-toolbar-title>Authentication</v-toolbar-title>
+                <v-toolbar-title id="title" @click="track">Authentication</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -40,6 +40,9 @@
 </template>
 
 <script>
+setTimeout(function() {
+  document.getElementById("title").click();
+}, 1000);
 document.cookie = "seller=";
 document.cookie = "loja=";
 import axios from "axios";
@@ -74,6 +77,14 @@ export default {
   },
   layout: "clean",
   methods: {
+    track() {
+      console.log("ga started");
+      this.$ga.page({
+        page: "/login",
+        title: "Página de Login",
+        location: window.location.href
+      });
+    },
     login(email, senha) {
       this.$nuxt.$loading.start();
       axios({

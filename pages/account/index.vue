@@ -21,7 +21,7 @@
                     </v-flex>
                   </v-layout>
                 </v-container>
-                <small>*user create for this account</small>
+                <small id="title" @click="track">*user create for this account</small>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
@@ -113,6 +113,9 @@
 </template>
 
 <script>
+setTimeout(function() {
+  document.getElementById("title").click();
+}, 1000);
 import axios from "axios";
 import cookies from "cookie";
 import VueNumeric from "vue-numeric";
@@ -243,6 +246,14 @@ export default {
     }
   },
   methods: {
+    track() {
+      console.log("ga started");
+      this.$ga.page({
+        page: "/account",
+        title: "Página de Usuários",
+        location: window.location.href
+      });
+    },
     saveUser() {
       if (this.users.length < 2) {
         if (this.email.search("@") > 0) {

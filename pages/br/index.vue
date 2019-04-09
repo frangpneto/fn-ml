@@ -97,7 +97,7 @@ export default {
       console.log("ga started");
       this.$ga.page({
         page: "/br",
-        title: "Página Iniciaç",
+        title: "Página Inicial",
         location: window.location.href
       });
     }
