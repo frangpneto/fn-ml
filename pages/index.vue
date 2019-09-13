@@ -126,6 +126,9 @@
               </v-flex>
             </v-layout>
           </v-container>
+          <v-card-actions>
+            <span class="font-italic">ultimos 7 dias</span>
+          </v-card-actions>
         </v-card>
       </v-flex>
       <!-- Concorrentes -->
@@ -147,6 +150,9 @@
               </v-flex>
             </v-layout>
           </v-container>
+          <v-card-actions>
+            <span class="font-italic">ultimos 7 dias</span>
+          </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
