@@ -107,6 +107,28 @@
     </v-layout>
     <v-divider></v-divider>
     <v-layout row wrap>
+      <!-- Principal -->
+      <v-flex pa-1 md4>
+        <v-card>
+          <v-card-title>
+            <v-icon large left>mdi-twitter</v-icon>
+            <span class="title">Sua Loja</span>
+          </v-card-title>
+          <v-container>
+            <v-layout row wrap>
+              <v-flex xs12 sm6>
+                <h2>{{orderSevenDay.quantity}}</h2>
+                <span>Quantidade Vendida</span>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <h2>{{orderSevenDay.value | currency}}</h2>
+                <span>Valor Vendido</span>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+      <!-- Concorrentes -->
       <v-flex pa-1 md4 v-for="concorrente in competitors" :key="concorrente.loja">
         <v-card>
           <v-card-title>
@@ -190,6 +212,19 @@ function getOrderToday(orders) {
       total++;
       value = +value + +order.totalAmount;
     }
+  }
+  ordersToday.quantity = total;
+  ordersToday.value = value;
+  return ordersToday;
+}
+function getOrderSevenDay(orders) {
+  var ordersToday = [];
+  var total = 0;
+  var value = 0;
+  for (var i = 0; i < orders.length; i++) {
+    var order = orders[i];
+    total++;
+    value = +value + +order.totalAmount;
   }
   ordersToday.quantity = total;
   ordersToday.value = value;
@@ -289,6 +324,7 @@ export default {
     });
     return {
       orderToday: getOrderToday(getOrders.data),
+      orderSevenDay: getOrderSevenDay(getOrders.data),
       orders: getOrders.data,
       sumOrders: sumOrders(getOrders.data),
       questions: getQuestions.data,
@@ -306,7 +342,7 @@ export default {
   },
   methods: {
     track() {
-      console.log('ga started')
+      console.log("ga started");
       this.$ga.page({
         page: "/",
         title: "Página Home Logada",
