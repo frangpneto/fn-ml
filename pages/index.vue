@@ -111,8 +111,7 @@
       <v-flex pa-1 md4>
         <v-card>
           <v-card-title>
-            <v-icon large left>mdi-twitter</v-icon>
-            <span class="title">Sua Loja</span>
+            <h3>Sua Loja</h3>
           </v-card-title>
           <v-container>
             <v-layout row wrap>
@@ -123,6 +122,10 @@
               <v-flex xs12 sm6>
                 <h2>{{orderSevenDay.value | currency}}</h2>
                 <span>Valor Vendido</span>
+              </v-flex>
+              <v-flex xs12 sm12>
+                <h2>{{(orderSevenDay.value / orderSevenDay.quantity) | currency}}</h2>
+                <span>Ticket Médio</span>
               </v-flex>
             </v-layout>
           </v-container>
@@ -135,8 +138,7 @@
       <v-flex pa-1 md4 v-for="concorrente in competitors" :key="concorrente.loja">
         <v-card>
           <v-card-title>
-            <v-icon large left>mdi-twitter</v-icon>
-            <span class="title">{{concorrente.loja}}</span>
+            <h3>{{concorrente.loja}}</h3>
           </v-card-title>
           <v-container>
             <v-layout row wrap>
@@ -147,6 +149,10 @@
               <v-flex xs12 sm6>
                 <h2>{{concorrente.Valor | currency}}</h2>
                 <span>Valor Vendido</span>
+              </v-flex>
+              <v-flex xs12 sm12>
+                <h2>{{(concorrente.Valor / concorrente.Qtd) | currency}}</h2>
+                <span>Ticket Médio</span>
               </v-flex>
             </v-layout>
           </v-container>
