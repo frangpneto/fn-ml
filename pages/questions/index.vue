@@ -27,7 +27,9 @@
               </tr>
               <tr>
                 <td>
-                  <v-img :src="this.imagemItem" style="width: 100px"></v-img>
+                  <a :href="this.linkItem" target="_blank">
+                    <v-img :src="this.imagemItem" style="width: 100px"></v-img>
+                  </a>
                 </td>
                 <td>{{this.nomeItem}}</td>
                 <td>{{this.precoItem | currency}}</td>
@@ -116,7 +118,8 @@ export default {
       precoItem: "",
       imagemItem: "",
       estoqueItem: "",
-      status: ""
+      status: "",
+      linkItem: ""
     };
   },
   methods: {
@@ -138,12 +141,13 @@ export default {
           questionId: questionId,
           text: text
         }
-      }).then(res => {
-        alert(res.data);
       })
-      .catch(err => {
-        alert(err);
-      });
+        .then(res => {
+          alert(res.data);
+        })
+        .catch(err => {
+          alert(err);
+        });
     },
     showProduct(item) {
       axios({
@@ -156,6 +160,7 @@ export default {
           this.imagemItem = res.data[0].secureThumbnail;
           this.estoqueItem = res.data[0].availableQuantity;
           this.status = res.data[0].status;
+          this.linkItem = res.data[0].permalink;
           var parent = document.getElementById("iframe");
           parent.insertAdjacentHTML(
             "afterend",
