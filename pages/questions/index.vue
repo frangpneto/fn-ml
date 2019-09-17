@@ -115,7 +115,8 @@ export default {
       nomeItem: "",
       precoItem: "",
       imagemItem: "",
-      estoqueItem: ""
+      estoqueItem: "",
+      status: ""
     };
   },
   methods: {
@@ -154,6 +155,7 @@ export default {
           this.precoItem = res.data[0].price;
           this.imagemItem = res.data[0].secureThumbnail;
           this.estoqueItem = res.data[0].availableQuantity;
+          this.status = res.data[0].status;
           var parent = document.getElementById("iframe");
           parent.insertAdjacentHTML(
             "afterend",
