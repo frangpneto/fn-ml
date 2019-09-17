@@ -1,10 +1,8 @@
 <template>
   <v-card>
-    <v-card-title id="title" @click="track">
-      Questions
-      <v-spacer></v-spacer>
-      <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details></v-text-field>
-    </v-card-title>
+    <v-layout justify-start>
+      <h1 id="title" @click="track">Questions Pending: {{questions.length}}</h1>
+    </v-layout>
 
     <v-row justify="center">
       <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -54,19 +52,12 @@
               <span class="title font-weight-light">Nova Mensagem</span>
             </v-card-title>
             <v-card-text class="headline font-weight-bold">"{{question.text}}"</v-card-text>
-            <v-card-actions>
-              <v-list-item class="grow">
-                <v-row align="center" justify="end">
-                  <v-text-field v-model="questionId[i]"></v-text-field>
-                </v-row>
-                <v-row align="center" justify="end">
-                  <v-icon class="mr-1">done_all</v-icon>
-                  <v-btn @click="sendAnswer(i, questionId[i])" class="subheading mr-2">responder</v-btn>
-                </v-row>
-              </v-list-item>
-            </v-card-actions>
+            <v-text-field v-model="questionId[i]"></v-text-field>
+            <v-btn @click="sendAnswer(question.id, questionId[i])" class="subheading mr-2">
+              <v-icon class="mr-1">done_all</v-icon>responder
+            </v-btn>
             <v-card-text class="White--text">
-              <span sm3>{{question.dateCreated | formatDate}}</span>
+              <span sm3>Recebido em: {{question.dateCreated | formatDate}}</span>
             </v-card-text>
           </v-card>
         </v-flex>
@@ -134,9 +125,22 @@ export default {
         location: window.location.href
       });
     },
-    sendAnswer(a, i) {
-      alert(a);
-      alert(i);
+    sendAnswer(questionId, text) {
+      axios({
+        method: "post",
+        url: `https://neto-mercado-livre.herokuapp.com/api/answers/${getCookie(
+          "seller"
+        )}`,
+        data: {
+          questionId: questionId,
+          text: text
+        }
+      }).then(res => {
+        alert(res.data);
+      })
+      .catch(err => {
+        alert(err);
+      });
     },
     showProduct(item) {
       axios({
@@ -163,7 +167,9 @@ export default {
 };
 </script>
 <style scoped>
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   text-align: center;
 }
