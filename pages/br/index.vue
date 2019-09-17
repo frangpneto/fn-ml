@@ -15,7 +15,7 @@
     </v-toolbar>
     <v-container>
       <!-- body -->
-      <InArticleAdsense data-ad-client="ca-pub-7138135049330010" data-ad-slot="2685611896"></InArticleAdsense>
+      <!-- <InArticleAdsense data-ad-client="ca-pub-7138135049330010" data-ad-slot="2685611896"></InArticleAdsense> -->
       <v-layout row wrap>
         <v-container>
           <v-layout row wrap>

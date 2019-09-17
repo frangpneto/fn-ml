@@ -316,6 +316,14 @@ export default {
         "YYYY-MM-DD"
       )}&dtf=${moment(new Date().addHours(3)).format()}`
     });
+    let getPendingQuestions = await axios({
+      method: "post",
+      url: `https://neto-mercado-livre.herokuapp.com/api/pedingQuestions/${getCookie(
+        "seller"
+      )}?dti=${moment(new Date().addDays(-360)).format(
+        "YYYY-MM-DD"
+      )}&dtf=${moment(new Date().addHours(3)).format()}`
+    });
     let getItems = await axios({
       method: "post",
       url: `https://neto-mercado-livre.herokuapp.com/api/items/${getCookie(
@@ -343,7 +351,7 @@ export default {
       sumOrders: sumOrders(getOrders.data),
       questions: getQuestions.data,
       questionsToday: sumQUestionsToday(getQuestions.data),
-      sumQuestionsPending: sumQuestionsPending(getQuestions),
+      sumQuestionsPending: getPendingQuestions.data.length,
       items: getItems.data,
       inactiveItem: itemsInactive(getItems.data),
       orderMessagesPending: messagePending(getMessage.data),
