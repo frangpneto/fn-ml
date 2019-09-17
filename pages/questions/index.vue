@@ -22,6 +22,7 @@
                 <th>Imagem</th>
                 <th>Nome</th>
                 <th>Preço</th>
+                <th>Status</th>
                 <th>Estoque</th>
               </tr>
               <tr>
@@ -30,6 +31,7 @@
                 </td>
                 <td>{{this.nomeItem}}</td>
                 <td>{{this.precoItem | currency}}</td>
+                <td>{{this.status}}</td>
                 <td>{{this.estoqueItem}}</td>
               </tr>
             </table>

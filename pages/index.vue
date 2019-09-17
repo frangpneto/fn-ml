@@ -123,7 +123,7 @@
                 <h2>{{orderSevenDay.value | currency}}</h2>
                 <span>Valor Vendido</span>
               </v-flex>
-              <hr>
+              <hr />
               <v-flex xs12 sm12>
                 <h2>{{(orderSevenDay.value / orderSevenDay.quantity) | currency}}</h2>
                 <span>Ticket Médio</span>
@@ -151,7 +151,7 @@
                 <h2>{{concorrente.Valor | currency}}</h2>
                 <span>Valor Vendido</span>
               </v-flex>
-              <hr>
+              <hr />
               <v-flex xs12 sm12>
                 <h2>{{(concorrente.Valor / concorrente.Qtd) | currency}}</h2>
                 <span>Ticket Médio</span>
@@ -356,7 +356,8 @@ export default {
       inactiveItem: itemsInactive(getItems.data),
       orderMessagesPending: messagePending(getMessage.data),
       visitsSevenDay: questionsLatestSevenDays(getItems.data),
-      competitors: getCompetitors
+      competitors: getCompetitors,
+      tab: { name: "Questions", text: "Questions" }
     };
   },
   components: {
