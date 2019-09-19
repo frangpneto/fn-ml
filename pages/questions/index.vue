@@ -52,12 +52,19 @@
         <v-flex pa-1 md12 v-for="(question, i) in questions" :key="i">
           <v-card color="#ffe491" light>
             <v-card-title>
-              <v-icon large left @click="showProduct(question.itemId)">question_answer</v-icon>
+              <v-icon large left>question_answer</v-icon>
               <span class="title font-weight-light">Nova Mensagem</span>
             </v-card-title>
             <v-card-text class="headline font-weight-bold">"{{question.text}}"</v-card-text>
             <v-text-field v-model="questionId[i]"></v-text-field>
-            <v-btn @click="sendAnswer(question.id, questionId[i])" class="subheading mr-2">
+            <v-btn v-bind="btnOption" @click="showProduct(question.itemId)" class="subheading mr-2">
+              <v-icon class="mr-1">remove_red_eye</v-icon>Ver Produto
+            </v-btn>
+            <v-btn
+              v-bind="btnOption"
+              @click="sendAnswer(question.id, questionId[i], i)"
+              class="subheading mr-2"
+            >
               <v-icon class="mr-1">done_all</v-icon>responder
             </v-btn>
             <v-card-text class="White--text">
@@ -119,8 +126,19 @@ export default {
       imagemItem: "",
       estoqueItem: "",
       status: "",
-      linkItem: ""
+      linkItem: "",
+      loading: false,
+      disabled: false
     };
+  },
+  computed: {
+    btnOption() {
+      const options = {
+        loading: this.loading,
+        disabled: this.disabled
+      };
+      return options;
+    }
   },
   methods: {
     track() {
@@ -131,23 +149,35 @@ export default {
         location: window.location.href
       });
     },
-    sendAnswer(questionId, text) {
-      axios({
-        method: "post",
-        url: `https://neto-mercado-livre.herokuapp.com/api/answers/${getCookie(
-          "seller"
-        )}`,
-        data: {
-          questionId: questionId,
-          text: text
-        }
-      })
-        .then(res => {
-          alert(res.data);
+    sendAnswer(questionId, text, i) {
+      this.loading = true;
+      this.disabled = true;
+      if (text != "" && text != undefined) {
+        axios({
+          method: "post",
+          url: `https://neto-mercado-livre.herokuapp.com/api/answers/${getCookie(
+            "seller"
+          )}`,
+          data: {
+            questionId: questionId,
+            text: text
+          }
         })
-        .catch(err => {
-          alert(err);
-        });
+          .then(res => {
+            this.questions.splice(i);
+            this.loading = false;
+            this.disabled = false;
+          })
+          .catch(err => {
+            alert(err);
+            this.loading = false;
+            this.disabled = false;
+          });
+      } else {
+        alert("Mensagem é obrigatória");
+        this.loading = false;
+        this.disabled = false;
+      }
     },
     showProduct(item) {
       axios({
