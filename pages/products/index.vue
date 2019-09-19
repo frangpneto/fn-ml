@@ -13,11 +13,14 @@
         <td>{{props.item.dateCreated | formatDate}}</td>
         <td>{{props.item.title}}</td>
         <td>{{props.item.status}}</td>
-        <td>{{props.item.sellerCustomField}}</td>
+        <!-- <td>{{props.item.sellerCustomField}}</td> -->
         <td>{{props.item.itemId}}</td>
+        <td v-if="props.item.last_seven_day_visits > 0">{{((props.item.soldQuantity / props.item.total_visits) * 100).toFixed(2)}} %</td>
+        <td v-else>0 %</td>
         <td>{{props.item.availableQuantity}}</td>
         <td>{{props.item.soldQuantity}}</td>
-        <td>{{props.item.price}}</td>
+        <td>{{props.item.price | currency}}</td>
+        <td>{{props.item.total_visits}}</td>
       </template>
       <v-alert
         slot="no-results"
@@ -95,17 +98,23 @@ export default {
           sortable: true,
           value: "status"
         },
-        {
-          text: "Id ERP",
-          aligth: "center",
-          sortable: true,
-          value: "sellerCustomField"
-        },
+        // {
+        //   text: "Id ERP",
+        //   aligth: "center",
+        //   sortable: true,
+        //   value: "sellerCustomField"
+        // },
         {
           text: "Id Item",
           aligth: "center",
           sortable: true,
           value: "itemId"
+        },
+        {
+          text: "Conversão",
+          aligth: "center",
+          sortable: true,
+          value: "last_seven_day_visits"
         },
         {
           text: "Estoque",
@@ -124,6 +133,12 @@ export default {
           aligth: "center",
           sortable: true,
           value: "price"
+        },
+        {
+          text: "Visitas",
+          aligth: "center",
+          sortable: true,
+          value: "total_visits"
         }
       ]
     };
