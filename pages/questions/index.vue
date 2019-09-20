@@ -56,7 +56,7 @@
               <span class="title font-weight-light">Nova Mensagem</span>
             </v-card-title>
             <v-card-text class="headline font-weight-bold">"{{question.text}}"</v-card-text>
-            <v-text-field v-model="questionId[i]"></v-text-field>
+            <v-text-field outlined label="Resposta" v-model="questionId[i]"></v-text-field>
             <v-btn v-bind="btnOption" @click="showProduct(question.itemId)" class="subheading mr-2">
               <v-icon class="mr-1">remove_red_eye</v-icon>Ver Produto
             </v-btn>
