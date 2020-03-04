@@ -267,7 +267,7 @@ export default {
         }
       } else {
         alert(
-          "Versão gratuita é limitada a 2 usuários, para cadastrar mais de 2 usuários envie um e-mail para suporte@software-fn.com"
+          "Versão gratuita é limitada a 2 usuarios, para cadastrar mais de 2 usuários envie um e-mail para suporte@software-fn.com"
         );
       }
     },
