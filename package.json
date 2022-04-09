@@ -23,7 +23,7 @@
     "cookie-universal-nuxt": "^2.0.14",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nuxt": "^2.4.0",
     "vue-analytics": "^5.16.4",
     "vue-currency-filter": "^3.3.0",
